@@ -16,9 +16,9 @@ const Player = db.define('player',
   }
 )
 
-Player.belongsTo(Team)
+
 Player.belongsTo(City)
-//Team.hasMany(Player)
+
 
 //console.log("Player from team model:", Player)
 module.exports = Player

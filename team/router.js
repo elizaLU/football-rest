@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const Team = require('./model')
+const City = require('../city/model')
 
 const router = new Router()
 
@@ -17,7 +18,7 @@ router.post('/teams', (req, res, next) => {
 })
 
 router.get('/teams/:teamId', (req, res, next) => {
-  Team.findByPk(req.params.teamId)
+  Team.findByPk(req.params.teamId, { include: [City] })
     .then(team => {
       if (team) {
         team
@@ -32,7 +33,7 @@ router.get('/teams/:teamId', (req, res, next) => {
 
 
 router.put('/teams/:teamId', (req, res, next) => {
-  Team.findByPk(req.params.teamId)
+  Team.findByPk(req.params.teamId, { include: [City] })
     .then(team => {
       if (!team) { res.status(404).json({ message: "Team not found." }).end() }
       else return team.update(req.body)

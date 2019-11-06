@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 const City = require('../city/model')
+const Player = require("../player/model")
+
 
 const Team = db.define('team',
   {
@@ -11,7 +13,15 @@ const Team = db.define('team',
   }
 )
 
+Player.belongsTo(Team)
+
 Team.belongsTo(City)
+Team.hasMany(Player)
+
+
+City.hasMany(Team)
+
+
 
 //console.log("Team from team model:", Team)
 module.exports = Team
