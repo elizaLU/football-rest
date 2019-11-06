@@ -3,10 +3,22 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elizaLU/football-rest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/elizaLU/football-rest/issues"
+  },
+  "homepage": "https://github.com/elizaLU/football-rest#readme",
+  "description": "",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
