@@ -5,6 +5,9 @@ const port = process.env.PORT || 4000
 
 app.listen(port, () => console.log(`RESTful API listening on port ${port}`))
 
-const db = require('./db')
+// const db = require('./db')
+// const Team = require('./team/model')
 
-const Team = require('./team/model')
+const teamRouter = require('./team/router')
+
+app.use(teamRouter)
