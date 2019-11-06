@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const Player = require('./model')
+const Team = require('../team/model')
 
 const router = new Router()
 
@@ -17,7 +18,7 @@ router.post('/players', (req, res, next) => {
 })
 
 router.get('/players/:playerId', (req, res, next) => {
-  Player.findByPk(req.params.playerId)
+  Player.findByPk(req.params.playerId,  { include: [Team] })
     .then(player => {
       if (player) {
         player
@@ -31,7 +32,7 @@ router.get('/players/:playerId', (req, res, next) => {
 })
 
 router.put('/players/:playerId', (req, res, next) => {
-  Player.findByPk(req.params.playerId)
+  Player.findByPk(req.params.playerId,  { include: [Team] })
     .then(player => {
       if (!player) { res.status(404).json({ message: "Player not found." }).end() }
       else return player.update(req.body)
