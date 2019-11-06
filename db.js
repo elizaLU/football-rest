@@ -6,7 +6,7 @@ const databaseUrl = process.env.DATABASE_URL || 'postgres://postgres:football-re
 const db = new Sequelize(databaseUrl)
 
 db
-  .sync() //({ force: true })
+  .sync({ force: true })
   .then(() => console.log("Database schema updated"))
   .catch(console.error)
 

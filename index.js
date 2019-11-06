@@ -17,3 +17,6 @@ app.use(teamRouter)
 
 const playerRouter = require('./player/router')
 app.use(playerRouter)
+
+const cityModel = require('./city/model')
+app.use(cityModel)
