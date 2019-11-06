@@ -8,9 +8,9 @@ const Team = db.define('team',
       field: 'team_name' //column name
     }
   },
-  {
-    timestamps: false
-  }
+  // {
+  //   timestamps: false
+  // }
   //,{ tableName: 'Teams' } db table name
 )
 
