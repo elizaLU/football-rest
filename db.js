@@ -5,7 +5,7 @@ const db = new Sequelize(databaseUrl)
 
 db
   .sync()
-  .then(() => console.log("database schema updated"))
+  .then(() => console.log("Database schema updated"))
   .catch(console.error)
 
 
