@@ -13,5 +13,7 @@ app.listen(port, () => console.log(`RESTful API listening on port ${port}`))
 // const Team = require('./team/model')
 
 const teamRouter = require('./team/router')
-
 app.use(teamRouter)
+
+const playerRouter = require('./player/router')
+app.use(playerRouter)
