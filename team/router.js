@@ -31,16 +31,32 @@ router.get('/teams/:teamId', (req, res, next) => {
 })
 
 
-.put('/teams/:teamId', (req, res) => {
+router.put('/teams/:teamId', (req, res, next) => {
   Team.findByPk(req.params.teamId)
     .then(team => {
-      if (!team) { res.status(404).json({ message: "Team not found." }).end()}
+      if (!team) { res.status(404).json({ message: "Team not found." }).end() }
       else return team.update(req.body)
     })
     .then(updatedTeam => {
       res.status(200).send(updatedTeam)
     })
+    .catch(next)
 })
+
+router.delete('/teams/:teamId', (req, res, next) => {
+  console.log('REQ PARAMS:', req.params)
+  Team.destroy({ where: { id: req.params.teamId } })
+    .then((numOfTeamsDeleted) => {
+      if (numOfTeamsDeleted === 0) {
+        res.status(404).send({ message: 'Team not found' })
+      } else {
+        res.status(200).send({ message: 'Team deleted' })
+      }
+    })
+    .catch(next)
+})
+
+
 
 
 module.exports = router;
