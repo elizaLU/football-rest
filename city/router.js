@@ -10,7 +10,7 @@ router.get('/cities', (req, res, next) => {
     .catch(next)
 })
 
-//http POST :4000/cities/ name=Roman  number=23
+//http POST :4000/cities name=Rotterdam  population=10000
 router.post('/cities', (req, res, next) => {
   City.create(req.body)
     .then(city => res.json(city))
@@ -32,7 +32,7 @@ router.get('/cities/:cityId', (req, res, next) => {
 })
 
 router.put('/cities/:cityId', (req, res, next) => {
-  City.findByPk(req.params.cityId,  { include: [Team] })
+  City.findByPk(req.params.cityId, { include: [Team] })
     .then(city => {
       if (!city) { res.status(404).json({ message: "City not found." }).end() }
       else return city.update(req.body)

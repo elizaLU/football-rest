@@ -25,3 +25,6 @@ app.use(playerRouter)
 
 const cityRouter = require('./city/router')
 app.use(cityRouter)
+
+const eventRouter = require('./event/router')
+app.use(eventRouter)
