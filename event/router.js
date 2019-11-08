@@ -17,7 +17,7 @@ router.post('/events', (req, res, next) => {
 })
 
 router.get('/events/:eventId', (req, res, next) => {
-  Event.findByPk(req.params.eventId)
+  Event.findByPk(req.params.eventId,  { include: [Team] })
     .then(event => {
       if (event) {
         event
