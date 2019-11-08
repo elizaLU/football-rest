@@ -1,5 +1,6 @@
 const { Router } = require('express')
 const Event = require('./model')
+const Team = require('../team/model')
 
 const router = new Router()
 
@@ -17,7 +18,7 @@ router.post('/events', (req, res, next) => {
 })
 
 router.get('/events/:eventId', (req, res, next) => {
-  Event.findByPk(req.params.eventId,  { include: [Team] })
+  Event.findByPk(req.params.eventId, { include: [Team] })
     .then(event => {
       if (event) {
         event
