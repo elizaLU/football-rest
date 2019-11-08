@@ -28,3 +28,6 @@ app.use(cityRouter)
 
 const eventRouter = require('./event/router')
 app.use(eventRouter)
+
+const userRouter = require('./user/router')
+app.use(userRouter)
