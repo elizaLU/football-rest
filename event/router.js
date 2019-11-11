@@ -1,7 +1,7 @@
 const { Router } = require('express')
 const Event = require('./model')
 const Team = require('../team/model')
-
+const auth = require('../server/auth/middleware')
 const router = new Router()
 
 router.get('/events', (req, res, next) => {
@@ -43,7 +43,7 @@ router.put('/events/:eventId', (req, res, next) => {
     .catch(next)
 })
 //http DELETE :4000/events/2 
-router.delete('/events/:eventId', (req, res, next) => {
+router.delete('/events/:eventId', auth, (req, res, next) => {
   console.log('REQ PARAMS:', req.params)
   Event.destroy({ where: { id: req.params.eventId } })
     .then((numOfEventsDeleted) => {
