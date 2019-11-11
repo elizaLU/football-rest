@@ -43,19 +43,25 @@ router.put('/events/:eventId', (req, res, next) => {
     .catch(next)
 })
 //http DELETE :4000/events/2 
-router.delete('/events/:eventId', auth, (req, res, next) => {
-  console.log('REQ PARAMS:', req.params)
-  Event.destroy({ where: { id: req.params.eventId } })
-    .then((numOfEventsDeleted) => {
-      if (numOfEventsDeleted === 0) {
-        res.status(404).send({ message: 'event not found' })
-      } else {
-        res.status(200).send({ message: 'event deleted' })
+router.delete('/events/:eventId', auth,
+  (req, res, next) => {
+    Event.findByPk(req.params.eventId)
+      .then(team => {
+        if (!team) {
+          res.status(404).end()
+        }
+      })
+    Event.destroy({
+      where: {
+        id: req.params.eventId,
       }
     })
-    .catch(next)
-})
-
+      .then((number) => {
+        res.send({ id: Number(req.params.eventId) }).status(401).end()
+      })
+      .catch(next);
+  }
+)
 
 
 module.exports = router;
