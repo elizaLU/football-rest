@@ -26,7 +26,7 @@ router.post('/login', (req, res) => {
     User
       .findOne({
         where: {
-          name: req.body.name
+          name: name
         }
       })
       .then(entity => {
@@ -41,7 +41,9 @@ router.post('/login', (req, res) => {
 
           // 3. if the password is correct, return a JWT with the userId of the user (user.id)
           res.send({
-            jwt: toJWT({ userId: entity.id })
+            jwt: toJWT({ userId: entity.id }),
+            //userId: entity.id,
+            name: entity.name
           })
         }
         else {
@@ -53,7 +55,7 @@ router.post('/login', (req, res) => {
       .catch(err => {
         console.error(err)
         res.status(500).send({
-          message: 'Something went wrong'
+          message: 'Something went wrong :)'
         })
       })
   }
