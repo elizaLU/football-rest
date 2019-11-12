@@ -17,8 +17,4 @@ const City = db.define('city',
   }
 )
 
-
-
-
-//console.log("Player from team model:", Player)
 module.exports = City

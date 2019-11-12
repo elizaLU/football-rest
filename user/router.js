@@ -5,8 +5,6 @@ const User = require('./model')
 
 router.post('/signup', (req, res, next) => {
   const { name, password } = req.body;
-  console.log("name & pass ", req.body);
-
   if (!name || !password) {
     res.status(400).send({
       message: 'Please supply a valid name and password'

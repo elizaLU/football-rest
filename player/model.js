@@ -18,6 +18,4 @@ const Player = db.define('player',
 
 Player.belongsTo(City)
 
-
-//console.log("Player from team model:", Player)
 module.exports = Player

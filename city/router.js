@@ -44,7 +44,6 @@ router.put('/cities/:cityId', (req, res, next) => {
 })
 //http DELETE :4000/cities/2 
 router.delete('/cities/:cityId', (req, res, next) => {
-  console.log('REQ PARAMS:', req.params)
   City.destroy({ where: { id: req.params.cityId } })
     .then((numOfCitiesDeleted) => {
       if (numOfCitiesDeleted === 0) {

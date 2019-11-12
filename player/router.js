@@ -43,9 +43,8 @@ router.put('/players/:playerId', (req, res, next) => {
     })
     .catch(next)
 })
-//http DELETE :4000/players/2 
+
 router.delete('/players/:playerId', (req, res, next) => {
-  console.log('REQ PARAMS:', req.params)
   Player.destroy({ where: { id: req.params.playerId } })
     .then((numOfPlayersDeleted) => {
       if (numOfPlayersDeleted === 0) {

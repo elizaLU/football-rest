@@ -29,6 +29,4 @@ Event.belongsToMany(Team, {
 City.hasMany(Team)
 
 
-
-//console.log("Team from team model:", Team)
 module.exports = Team

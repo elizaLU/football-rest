@@ -42,7 +42,6 @@ router.put('/events/:eventId', (req, res, next) => {
     })
     .catch(next)
 })
-//http DELETE :4000/events/2 
 router.delete('/events/:eventId', auth,
   (req, res, next) => {
     Event.findByPk(req.params.eventId)

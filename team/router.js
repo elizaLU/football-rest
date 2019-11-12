@@ -45,7 +45,6 @@ router.put('/teams/:teamId', (req, res, next) => {
 })
 
 router.delete('/teams/:teamId', (req, res, next) => {
-  console.log('REQ PARAMS:', req.params)
   Team.destroy({ where: { id: req.params.teamId } })
     .then((numOfTeamsDeleted) => {
       if (numOfTeamsDeleted === 0) {
