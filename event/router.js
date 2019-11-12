@@ -46,8 +46,8 @@ router.put('/events/:eventId', (req, res, next) => {
 router.delete('/events/:eventId', auth,
   (req, res, next) => {
     Event.findByPk(req.params.eventId)
-      .then(team => {
-        if (!team) {
+      .then(event => {
+        if (!event) {
           res.status(404).end()
         }
       })
