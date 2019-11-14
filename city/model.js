@@ -10,9 +10,9 @@ const City = db.define('city',
       type: Sequelize.STRING,
       field: 'city' //column name
     },
-    popluation: {
+    population: {
       type: Sequelize.INTEGER,
-      field: 'popluation'
+      field: 'population'
     }
   }
 )
