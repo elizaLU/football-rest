@@ -9,13 +9,6 @@ router.get('/teams', (req, res, next) => {
     .then(team => res.json(team))
     .catch(next)
 })
-//local: http POST :4000/teams name=eggyolk  
-//HEROKU: http POST https://fast-caverns-31315.herokuapp.com/teams name='cats and dogs'
-router.post('/teams', (req, res, next) => {
-  Team.create(req.body)
-    .then(team => res.json(team))
-    .catch(next)
-})
 
 router.get('/teams/:teamId', (req, res, next) => {
   Team.findByPk(req.params.teamId, { include: [City] })
@@ -28,6 +21,13 @@ router.get('/teams/:teamId', (req, res, next) => {
         res.status(404).json({ message: "Team not found" }).end()
       }
     })
+    .catch(next)
+})
+//local: http POST :4000/teams name=eggyolk  
+//HEROKU: http POST https://fast-caverns-31315.herokuapp.com/teams name='cats and dogs'
+router.post('/teams', (req, res, next) => {
+  Team.create(req.body, { include: [City] })
+    .then(team => res.json(team))
     .catch(next)
 })
 
