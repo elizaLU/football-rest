@@ -48,7 +48,7 @@ router.post('/login', (req, res) => {
         }
         else {
           res.status(400).send({
-            message: 'Password was incorrect'
+            message: 'Password or name was incorrect'
           })
         }
       })
